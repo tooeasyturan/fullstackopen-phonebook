@@ -11,7 +11,7 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [filter, setFilter] = useState('')
+  const [filtered, setFiltered] = useState('')
 
   const handleChangeName = (event) => {
     //console.log(event.target.value)
@@ -25,11 +25,11 @@ const App = () => {
 
   const handleFilter = (event) => {
     //console.log(event.target.value)
-    setFilter(event.target.value)
+    setFiltered(event.target.value)
   }
 
-  const filtered = persons.filter(person => {
-    return person.name.toUpperCase().includes(filter.toUpperCase())
+  const showFiltered = persons.filter(person => {
+    return person.name.toUpperCase().includes(filtered.toUpperCase())
   })
 
   console.log(filtered)
@@ -44,7 +44,7 @@ const App = () => {
 
   const filteredName = () => {
     return (
-      filtered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
+      showFiltered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
     )
   }
 
@@ -52,7 +52,7 @@ const App = () => {
     <div>
       <h1>Phonebook</h1>
       <div>
-        Filter shown with <input onChange={handleFilter} value={filter} />
+        Filter shown with <input onChange={handleFilter} value={filtered} />
       </div>
       <h2>Add New</h2>
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
