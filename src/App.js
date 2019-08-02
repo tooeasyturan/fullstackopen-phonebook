@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PersonForm from './components/PersonForm';
 
 
 const App = () => {
@@ -33,24 +34,6 @@ const App = () => {
 
   console.log(filtered)
 
-  const addName = (event) => {
-    event.preventDefault()
-
-    // Check to see if name exists, if not add name
-    if (persons.find(person => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`)
-    } else {
-      const personsObject = {
-        name: newName,
-        id: persons.length + 1,
-        number: newNumber
-      }
-      setPersons(persons.concat(personsObject))
-      setNewName('')
-      setNewNumber('')
-    }
-  }
-
 
   // const personsName = () => {
   //   return (
@@ -70,20 +53,9 @@ const App = () => {
       <h1>Phonebook</h1>
       <div>
         Filter shown with <input onChange={handleFilter} value={filter} />
-
-
       </div>
       <h2>Add New</h2>
-      <form onSubmit={addName}>
-        <div>
-          name: <input value={newName} onChange={handleChangeName} />
-          <br />
-          number: <input value={newNumber} onChange={handleChangeNumber} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
       <h2>Numbers</h2>
       {filteredName()}
     </div>
