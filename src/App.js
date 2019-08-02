@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import PersonForm from './components/PersonForm';
+import Filter from './components/Filter'
+
 
 
 const App = () => {
@@ -51,9 +53,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <div>
-        Filter shown with <input onChange={handleFilter} value={filtered} />
-      </div>
+      <Filter handleFilter={handleFilter} filtered={filtered} />
       <h2>Add New</h2>
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
       <h2>Numbers</h2>
