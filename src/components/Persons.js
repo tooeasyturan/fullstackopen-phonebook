@@ -1,17 +1,24 @@
 import React from 'react'
 
 
-const Persons = () => {
-  const filteredName = ({ filtered }) => {
-    return (
-      filtered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
-    )
 
 
+const Persons = ({ persons, filtered }) => {
+  const showFiltered = persons.filter(person => {
+    return person.name.toUpperCase().includes(filtered.toUpperCase())
+  })
+
+  const filteredName = () => {
     return (
-      { filteredName }
+      showFiltered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
     )
   }
+
+  return (
+    <>
+      {filteredName()}
+    </>
+  )
 }
 
 export default Persons

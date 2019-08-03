@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PersonForm from './components/PersonForm';
 import Filter from './components/Filter'
+import Persons from './components/Persons'
 
 
 
@@ -30,11 +31,11 @@ const App = () => {
     setFiltered(event.target.value)
   }
 
-  const showFiltered = persons.filter(person => {
-    return person.name.toUpperCase().includes(filtered.toUpperCase())
-  })
+  // const showFiltered = persons.filter(person => {
+  //   return person.name.toUpperCase().includes(filtered.toUpperCase())
+  // })
 
-  console.log(filtered)
+  //console.log(filtered)
 
 
   // const personsName = () => {
@@ -44,11 +45,11 @@ const App = () => {
   // }
 
 
-  const filteredName = () => {
-    return (
-      showFiltered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
-    )
-  }
+  // const filteredName = () => {
+  //   return (
+  //     showFiltered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
+  //   )
+  // }
 
   return (
     <div>
@@ -57,7 +58,7 @@ const App = () => {
       <h2>Add New</h2>
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
       <h2>Numbers</h2>
-      {filteredName()}
+      <Persons persons={persons} filtered={filtered} />
     </div>
   )
 }
