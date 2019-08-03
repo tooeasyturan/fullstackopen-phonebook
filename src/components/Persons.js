@@ -1,12 +1,11 @@
 import React from 'react'
 
-
-
-
 const Persons = ({ persons, filtered }) => {
   const showFiltered = persons.filter(person => {
     return person.name.toUpperCase().includes(filtered.toUpperCase())
   })
+
+  console.log(showFiltered)
 
   const filteredName = () => {
     return (

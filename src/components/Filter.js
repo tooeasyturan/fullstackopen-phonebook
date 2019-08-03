@@ -10,6 +10,3 @@ const Filter = ({ filtered, handleFilter }) => {
 
 export default Filter
 
-// const filtered = () => persons.filter(person => {
-//   return person.name.toUpperCase().includes(filtered.toUpperCase())
-// })

@@ -3,15 +3,8 @@ import PersonForm from './components/PersonForm';
 import Filter from './components/Filter'
 import Persons from './components/Persons'
 
-
-
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ])
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filtered, setFiltered] = useState('')
@@ -30,26 +23,6 @@ const App = () => {
     //console.log(event.target.value)
     setFiltered(event.target.value)
   }
-
-  // const showFiltered = persons.filter(person => {
-  //   return person.name.toUpperCase().includes(filtered.toUpperCase())
-  // })
-
-  //console.log(filtered)
-
-
-  // const personsName = () => {
-  //   return (
-  //     persons.map(person => <p key={person.id}>{person.name} {person.number}</p>)
-  //   )
-  // }
-
-
-  // const filteredName = () => {
-  //   return (
-  //     showFiltered.map(filteredName => <p>{filteredName.name} {filteredName.number}</p>)
-  //   )
-  // }
 
   return (
     <div>
