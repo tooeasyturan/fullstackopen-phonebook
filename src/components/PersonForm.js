@@ -1,4 +1,5 @@
 import React from 'react'
+import PersonService from '../services/persons'
 
 
 const PersonForm = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber, handleChangeName, handleChangeNumber }) => {
@@ -14,10 +15,15 @@ const PersonForm = ({ persons, setPersons, newName, setNewName, newNumber, setNe
         id: persons.length + 1,
         number: newNumber
       }
-      setPersons(persons.concat(personsObject))
-      setNewName('')
-      setNewNumber('')
+      PersonService
+        .create(personsObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
     }
+
   }
 
   return (

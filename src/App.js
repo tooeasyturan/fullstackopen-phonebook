@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PersonForm from './components/PersonForm';
 import Filter from './components/Filter'
 import Persons from './components/Persons'
-import axios from 'axios'
+import PersonService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -10,17 +10,15 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filtered, setFiltered] = useState('')
 
-  const hook = () => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
+  useEffect(() => {
+    PersonService
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons)
       })
-  }
+  }, [])
 
-  useEffect(hook, [])
+
 
   const handleChangeName = (event) => {
     //console.log(event.target.value)
@@ -37,6 +35,12 @@ const App = () => {
     setFiltered(event.target.value)
   }
 
+
+
+  const deletePersonHandler = id => {
+    console.log(id)
+  }
+
   return (
     <div>
       <h1>Phonebook</h1>
@@ -44,7 +48,7 @@ const App = () => {
       <h2>Add New</h2>
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
       <h2>Numbers</h2>
-      <Persons persons={persons} filtered={filtered} />
+      <Persons persons={persons} filtered={filtered} deletePerson={(id) => deletePersonHandler(id)} />
     </div>
   )
 }
