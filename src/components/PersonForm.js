@@ -8,11 +8,22 @@ const PersonForm = ({ persons, setPersons, newName, setNewName, newNumber, setNe
 
     // Check to see if name exists, if not add name
     if (persons.find(person => person.name === newName)) {
-      alert(`${newName} is already added to phonebook`)
+      const person = persons.find(person => person.name === newName)
+      window.confirm(`${person.name} is already added to the phonebook. Replace the old number with a new one?`)
+      const changedNumber = { ...person, number: newNumber }
+      const id = person.id
+
+      PersonService.update(id, changedNumber)
+        .then(returnedPerson => {
+          setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+          setNewName('')
+          setNewNumber('')
+        })
+
+
     } else {
       const personsObject = {
         name: newName,
-
         number: newNumber
       }
       PersonService
