@@ -18,8 +18,6 @@ const App = () => {
       })
   }, [])
 
-
-
   const handleChangeName = (event) => {
     //console.log(event.target.value)
     setNewName(event.target.value)
@@ -36,10 +34,12 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
-    PersonService.remove().then(returnedPersons => { setPersons(returnedPersons) })
+    console.log(id)
+    PersonService
+      .remove(id)
+      .then(setPersons(persons.filter(p => p.id !== id)))
+
   }
-
-
 
   return (
     <div>

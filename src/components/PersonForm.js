@@ -12,7 +12,7 @@ const PersonForm = ({ persons, setPersons, newName, setNewName, newNumber, setNe
     } else {
       const personsObject = {
         name: newName,
-        id: persons.length + 1,
+
         number: newNumber
       }
       PersonService
