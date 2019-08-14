@@ -1,19 +1,14 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
+      "name": "josh turan",
+      "number": "1235",
       "id": 1
     },
     {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
+      "name": "jason turan",
+      "number": "1235",
       "id": 2
-    },
-    {
-      "name": "Josh Turan",
-      "number": "0769321622",
-      "id": 4
     }
   ]
 }
