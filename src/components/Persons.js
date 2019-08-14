@@ -1,4 +1,5 @@
 import React from 'react'
+import Person from './Person'
 
 const Persons = ({ persons, filtered, deletePerson }) => {
   const showFiltered = persons.filter(person => {
@@ -7,15 +8,23 @@ const Persons = ({ persons, filtered, deletePerson }) => {
 
   console.log(showFiltered)
 
-  const filteredName = () => {
+  // const filteredName = () => {
+  //   return (
+  //     showFiltered.map(filteredName => <p >{filteredName.name} {filteredName.number}</p>)
+  //   )
+  // }
+
+  const rows = () => {
     return (
-      showFiltered.map(filteredName => <p >{filteredName.name} {filteredName.number} <button onClick={() => deletePerson(filteredName.id)}>delete</button></p>)
+      showFiltered.map(person =>
+        <Person key={person.id} name={person.name} number={person.number} deletePerson={() => deletePerson(person.id)} />
+      )
     )
   }
 
   return (
     <>
-      {filteredName()}
+      {rows()}
     </>
   )
 }

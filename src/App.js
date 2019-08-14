@@ -35,11 +35,11 @@ const App = () => {
     setFiltered(event.target.value)
   }
 
-
-
-  const deletePersonHandler = id => {
-    console.log(id)
+  const deletePerson = (id) => {
+    PersonService.remove().then(returnedPersons => { setPersons(returnedPersons) })
   }
+
+
 
   return (
     <div>
@@ -48,7 +48,7 @@ const App = () => {
       <h2>Add New</h2>
       <PersonForm persons={persons} setPersons={setPersons} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} handleChangeName={handleChangeName} handleChangeNumber={handleChangeNumber} />
       <h2>Numbers</h2>
-      <Persons persons={persons} filtered={filtered} deletePerson={(id) => deletePersonHandler(id)} />
+      <Persons persons={persons} filtered={filtered} deletePerson={deletePerson} />
     </div>
   )
 }
